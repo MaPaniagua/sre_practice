@@ -1,0 +1,30 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: sre
+description: Simple application delivery pipeline
+serialPipeline:
+ stages:
+ - targetId: develop
+ - targetId: staging
+   profiles:
+   - staging
+---
+
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: develop
+description: develop cluster
+gke:
+  cluster: projects/master-csmd/locations/europe-west1/clusters/cloud-deploy
+---
+
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: staging
+description: staging cluster
+requireApproval: true
+gke:
+  cluster: projects/master-csmd/locations/europe-west1/clusters/cloud-deploy
