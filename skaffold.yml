@@ -14,3 +14,4 @@ profiles:
         defaultNamespace: staging
         paths: 
           - k8s/overlays/staging
+          
