@@ -15,3 +15,5 @@ steps:
         "--images", "cloud-deploy=europe-west1-docker.pkg.dev/master-csmd/clouddeploy/hello:$COMMIT_SHA",
         "--skaffold-file=skaffold.yml"
       ]
+options:
+  logging: CLOUD_LOGGING_ONLY
